@@ -121,7 +121,7 @@ namespace fgAlmViewer
             AlarmCols[2] = "M.ValueString,";
             AlarmCols[3] = "M.Priority as Prioridade,";
             AlarmCols[4] = "M.GroupName,";        
-            AlarmCols[5] = "M.Time AS TEMPO,";
+            AlarmCols[5] = "D.EventStamp AS TEMPO,";
             AlarmCols[6] = "C.Comment,";
             AlarmCols[7] = @"'Alarme' as TIPO,";
             AlarmCols[8] = @"D.OperatorNode,";
@@ -135,7 +135,7 @@ namespace fgAlmViewer
                 AlarmQuery = AlarmQuery + s;
             }
             AlarmQuery = AlarmQuery.Remove(AlarmQuery.Length-1);
-            AlarmQuery = AlarmQuery + " FROM AlarmMaster AS M" +" LEFT JOIN AlarmDetail AS D" +" ON M.AlarmId = D.AlarmId"+
+            AlarmQuery = AlarmQuery + " FROM AlarmDetail AS D " + " LEFT JOIN AlarmMaster AS M " + " ON M.AlarmId = D.AlarmId"+
                         " LEFT JOIN Comment AS C"+ " ON D.CommentId = C.CommentId";
 
             #region WHERE CLAUSE
@@ -146,9 +146,11 @@ namespace fgAlmViewer
                 comentWhere = String.Format(" AND C.Comment like '%{0}%'", edtComment.Text);
                 }
             AlarmQuery = AlarmQuery +
-            String.Format(" WHERE M.Time >= '{0}' AND M.Time <= '{1}'", dInicial, dFinal)
+            String.Format(" WHERE D.EventStamp >= '{0}' AND D.EventStamp <= '{1}'", dInicial, dFinal)
             + String.Format(" AND M.TagName like '%{0}%' AND D.OperatorName like '%{1}%'", edtTagName.Text, edtUser.Text)
+            + String.Format(" AND M.GroupName like '%{0}%' AND D.OperatorNode like '%{1}%'", edtGrupo.Text, edtNode.Text)
             + String.Format("AND M.Priority between {0} and {1}",spinFrom.Value.ToString(),spinTo.Value.ToString())
+            
             + comentWhere;
 
 

@@ -33,12 +33,15 @@
             // 
             // almGrid1
             // 
+            this.almGrid1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.almGrid1.DataBase = "wwalmdb";
             this.almGrid1.Location = new System.Drawing.Point(12, 12);
             this.almGrid1.Name = "almGrid1";
             this.almGrid1.Node = "localhost";
             this.almGrid1.Password = "wwUser";
-            this.almGrid1.Size = new System.Drawing.Size(906, 494);
+            this.almGrid1.Size = new System.Drawing.Size(946, 494);
             this.almGrid1.TabIndex = 0;
             this.almGrid1.User = "wwUser";
             // 
@@ -46,7 +49,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(921, 507);
+            this.ClientSize = new System.Drawing.Size(970, 507);
             this.Controls.Add(this.almGrid1);
             this.Name = "Form1";
             this.Text = "Form1";
